@@ -4,7 +4,7 @@ def has_conflict(student, course):      # check if the meeting times has any con
     for registered_course in student.schedule:                                      
         for day, start, end in registered_course.meeting_times:
             for new_day, new_start, new_end in course.meeting_times:
-                if day == new_day and start < new_end and new_start < end:          # same day and the hours overlap
+                if day == new_day and start < new_end and new_start < end:          # if same day and the hours overlap
                     return True
     return False
 
@@ -13,7 +13,7 @@ def priority(student, course):          # students in a later year get a higher 
     return student.year
 
 
-def student_registration(student, course):      # registration function
+def student_registration(student, course):      # registration funtcion
 
     if student.id in course.enrolled or student.id in course.waitlist:      # check for enrollment
         return "This student is already registered or waitlisted"
@@ -24,7 +24,7 @@ def student_registration(student, course):      # registration function
     if not course.prereqs <= student.completed_courses:     # check if the student has taken all the prerequisites
         return "Student cannot be registered for this course, student is missing prerequisites"
 
-    if has_conflict(student, course):       # checks for conflicts in meeting time
+    if has_conflict(student, course):       # checks for course conflicts in meeting time
         return "Time conflict"
 
     if len(course.enrolled) < course.capacity:      # check if the course has seats available
@@ -45,7 +45,7 @@ def drop_course(student, course, students):
 
         if not course.waitlist.is_empty():
 
-            next_student = students[course.waitlist.get_first_student()]    # students is a dictionary: id -> Student
+            next_student = students[course.waitlist.get_first_student()]    # students is a dictionary: id - Student
             course.enrolled.add(next_student.id)
 
             next_student.schedule.append(course)
@@ -56,7 +56,7 @@ def drop_course(student, course, students):
         return "Student dropped the course"
 
     if course.waitlist.remove_student(student.id):
-        
+
         return "Student removed from the waitlist"
 
     return "This student is not registered for this course"

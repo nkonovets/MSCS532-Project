@@ -1,7 +1,7 @@
 from entities import Student, Course
 from registration import student_registration, drop_course
 
-students = {                                    # students and courses are stored in dictionaries, so we can find them by id
+students = {                                    # students and courses are stored in dictionaries, so I can find them by id
     "S1": Student("S1", 1, set()),
     "S2": Student("S2", 2, {"ITSI336"}),
     "S3": Student("S3", 3, {"ITSI336"}),
@@ -26,4 +26,4 @@ if __name__ == "__main__":
     register("S3", "MSCS532")                     # course is full, goes to the waitlist
     register("S4", "MSCS532")                     # senior, goes ahead of S3
 
-    print(drop_course(students["S2"], courses["MSCS532"], students))      # S4 gets the seat
+    print(drop_course(students["S2"], courses["MSCS532"], students))      # S4 will get the seat

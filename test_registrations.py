@@ -25,7 +25,7 @@ class TestRegistrationSystem(unittest.TestCase):
 
         self.assertEqual(student_registration(Student("S3", 2, {"ITSI336"}), course), "Added to waiting list")
 
-    def test_waitlist_order(self):              # priority first, then arrival order
+    def test_waitlist_order(self):              # priority first, then registration order
 
         waitlist = Waitlist()
 

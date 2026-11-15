@@ -5,7 +5,7 @@ A partial implementation of the course registration system designed in Phase 1. 
 ## How to run
 
 ```bash
-python3 demo.py
+python3 demo_run.py
 ```
 
 Tests:
