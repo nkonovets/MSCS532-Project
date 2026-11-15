@@ -80,21 +80,4 @@ class Waitlist:
 
     
 
-if __name__ == "__main__":
-
-    waitlist = Waitlist() #create a waitlist entity from the class
-
-    waitlist.addentry("S1", 2)
-    waitlist.addentry("S2", 4)
-    waitlist.addentry("S3", 4)
-    waitlist.addentry("S4", 1)
-
-    waitlist.remove_student("S4")
-
-    while not waitlist.is_empty():      
-        print("next student:", waitlist.get_first_student())
-
-
-
-
 
