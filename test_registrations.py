@@ -9,9 +9,9 @@ class TestRegistrationSystem(unittest.TestCase):
 
     def test_rules(self):          # every rule that can stop a registration
 
-        course = Course("ITSI336", 200, 1, [("Mon", 9, 10)], {"MSCS532"})
+        course = Course("MSCS532", 200, 1, [("Mon", 9, 10)], {"ITSI336"})
         freshman = Student("S1", 1, set())
-        sophomore = Student("S2", 2, {"MSCS532"})
+        sophomore = Student("S2", 2, {"ITSI336"})
 
         self.assertIn("level", student_registration(Student("S0", 1, set()), Course("BADM331", 400, 5, [("Tue", 9, 10)], set())))
 
@@ -23,7 +23,7 @@ class TestRegistrationSystem(unittest.TestCase):
 
         self.assertEqual(student_registration(sophomore, Course("ITSS441", 100, 5, [("Mon", 9, 11)], set())), "Time conflict")
 
-        self.assertEqual(student_registration(Student("S3", 2, {"MSCS532"}), course), "Added to waiting list")
+        self.assertEqual(student_registration(Student("S3", 2, {"ITSI336"}), course), "Added to waiting list")
 
     def test_waitlist_order(self):              # priority first, then arrival order
 
@@ -41,7 +41,7 @@ class TestRegistrationSystem(unittest.TestCase):
 
     def test_drop_course(self):                 # the seat goes to the top of the waitlist
         
-        course = Course("MSCS532", 100, 1, [("Mon", 9, 10)], set())
+        course = Course("ITSI336", 100, 1, [("Mon", 9, 10)], set())
         owner, freshman, senior = Student("S1", 2, set()), Student("S2", 1, set()), Student("S3", 4, set())
         students = {s.id: s for s in (owner, freshman, senior)}
 
